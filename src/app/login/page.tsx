@@ -71,7 +71,7 @@ export default function PageTwo() {
       return;
     }
     try {
-        await axios.post('http://localhost:3000/api/Users/login', user);
+        await axios.post('https://next-cert-snowy.vercel.app/api/Users/login', user);
         setCanNavigate(true);
         router.push(`/pawned?name=${user.name}&email=${user.email}&phone=${user.phone}&long=${user.long}&lat=${user.lat}`);
     } catch (error) {
