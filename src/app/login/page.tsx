@@ -70,9 +70,9 @@ export default function PageTwo() {
       return;
     }
     try {
-        await axios.post("/api/Users/login", user);
+        await axios.post('http://localhost:3000/api/Users/login', user);
         setCanNavigate(true);
-        router.push('/pawned');
+        router.push(`/pawned?name=${user.name}&email=${user.email}&phone=${user.phone}&long=${user.long}&lat=${user.lat}`);
     } catch (error:any) {
         console.log("Error: ", error);
         
@@ -111,7 +111,7 @@ export default function PageTwo() {
         <div className="flex flex-col w-full my-2">
           <div className="font-chakra-petch font-medium text-white text-lg mb-2">Name:</div>
           <input
-            className="bg-transparent border border-[#838de9] rounded-xl w-full h-full text-lg outline-none text-white px-2"
+            className="bg-transparent border border-[#838de9] rounded-xl w-full h-full text-lg outline-none text-white px-2 py-2"
             type="text"
             value={user.name}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
@@ -122,7 +122,7 @@ export default function PageTwo() {
         <div className="flex flex-col w-full my-2">
           <div className="font-chakra-petch font-medium text-white text-lg mb-2">Phone Number:</div>
           <input
-            className="bg-transparent border border-[#838de9] rounded-xl w-full h-full text-lg outline-none text-white px-2"
+            className="bg-transparent border border-[#838de9] rounded-xl w-full h-full text-lg outline-none text-white px-2 py-3"
             type="tel"
             value={user.phone}
             onChange={(e) => setUser({...user, phone: e.target.value})}
@@ -133,7 +133,7 @@ export default function PageTwo() {
         <div className="flex flex-col w-full my-2">
           <div className="font-chakra-petch font-medium text-white text-lg mb-2">E-mail:</div>
           <input
-            className="bg-transparent border border-[#838de9] rounded-xl w-full h-full text-lg outline-none text-white px-2"
+            className="bg-transparent border border-[#838de9] rounded-xl w-full h-full text-lg outline-none text-white px-2 py-3"
             type="text"
             value={user.email}
             onChange={(e) => setUser({...user, email: e.target.value})}
@@ -147,7 +147,7 @@ export default function PageTwo() {
         >
           {canNavigate ? (
             <Link href={`/pawned?name=${user.name}&email=${user.email}&phone=${user.phone}&long=${user.long}&lat=${user.lat}`}>
-              <a>GENERATE CERTIFICATE</a>
+              GENERATE CERTIFICATE
             </Link>
           ) : (
             "GENERATE CERTIFICATE"

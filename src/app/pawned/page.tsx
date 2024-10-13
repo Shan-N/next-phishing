@@ -73,10 +73,10 @@ export default function PageThree() {
           <section className={`transform transition-all duration-500 ease-in-out ${isVisible ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'} bg-[#161313] flex flex-col justify-start items-center mt-8 w-full px-4`}>
             <div className="border-[#6e6e6e] border shadow-custom rounded-xl text-left px-6 py-4 text-blue-100 w-full max-w-lg">
               {/* Render user information conditionally */}
-              {name && <p className="text-lg font-chakra"><strong>Name:</strong> {name}</p>}
-              {phone && <p className="text-lg font-chakra"><strong>Mobile Number:</strong> {phone}</p>}
-              {email && <p className="text-lg font-chakra"><strong>Email ID:</strong> {email}</p>}
-              {long && lat && <p className="text-lg font-chakra"><strong>Location:</strong> {long}, {lat}</p>}
+              {<p className="text-lg font-chakra"><strong>Name:</strong> {name}</p>}
+              <p className="text-lg font-chakra"><strong>Mobile Number:</strong> {phone}</p>
+              <p className="text-lg font-chakra"><strong>Email ID:</strong> {email}</p>
+              <p className="text-lg font-chakra"><strong>Location:</strong> {long}, {lat}</p>
             </div>
           </section>
 

@@ -12,10 +12,10 @@ const config: Config = {
   		boxShadow: {
   			custom: '7px 8px 0px rgba(106,119,252, 1)'
   		},
-  		fontFamily: {
-  			silkscreen: ["Silkscreen", "sans-serif"],
-  			chakra: ["Chakra Petch", "sans-serif"]
-  		},
+      fontFamily: {
+        silkscreen: ["Silkscreen", "cursive"],
+        chakra: ["Chakra Petch", "sans-serif"]
+      },      
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
