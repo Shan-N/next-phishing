@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
-export default function PageThree() {
+const PageThree = () => {
   const [isAlert, setAlert] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const searchParams = useSearchParams();
@@ -19,7 +20,7 @@ export default function PageThree() {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
-
+    
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,7 +29,7 @@ export default function PageThree() {
     const timer = setTimeout(() => {
       setAlert(false);
     }, 10000);
-
+    
     return () => clearTimeout(timer);
   }, []);
 
@@ -49,7 +50,7 @@ export default function PageThree() {
           {/* Logo Section */}
           <main className="flex flex-col items-center">
             <div className="my-7 md:my-5">
-              <img
+              <Image
                 aria-hidden="true"
                 src="https://www.dscvit.com/newlogo.svg"
                 width={150}
@@ -72,8 +73,7 @@ export default function PageThree() {
           {/* User Information Section */}
           <section className={`transform transition-all duration-500 ease-in-out ${isVisible ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'} bg-[#161313] flex flex-col justify-start items-center mt-8 w-full px-4`}>
             <div className="border-[#6e6e6e] border shadow-custom rounded-xl text-left px-6 py-4 text-blue-100 w-full max-w-lg">
-              {/* Render user information conditionally */}
-              {<p className="text-lg font-chakra"><strong>Name:</strong> {name}</p>}
+              <p className="text-lg font-chakra"><strong>Name:</strong> {name}</p>
               <p className="text-lg font-chakra"><strong>Mobile Number:</strong> {phone}</p>
               <p className="text-lg font-chakra"><strong>Email ID:</strong> {email}</p>
               <p className="text-lg font-chakra"><strong>Location:</strong> {long}, {lat}</p>
@@ -94,5 +94,13 @@ export default function PageThree() {
         </div>
       )}
     </>
+  );
+};
+
+export default function WrappedPageThree() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageThree />
+    </Suspense>
   );
 }
