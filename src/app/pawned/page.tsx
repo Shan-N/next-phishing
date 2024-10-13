@@ -88,7 +88,7 @@ export default function PageThree() {
           {/* Footer */}
           <footer className="flex flex-row justify-center items-center my-4 w-[100%]">
             <h3 className="text-white font-chakra text-sm font-semibold text-center">
-              Developed with 💗 by <span className="text-white font-chakra text-sm font-semibold">GDGC SY</span>
+              Developed with 💗 by <span className="text-white font-chakra text-sm font-semibold">Shannn</span>
             </h3>
           </footer>
         </div>
