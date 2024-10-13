@@ -1,14 +1,18 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export default function PageThree() {
   const [isAlert, setAlert] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  // Access query parameters only when router is ready
-  const { name, phone, email, long, lat } = router.isReady ? router.query : {};
+  // Access query parameters
+  const name = searchParams.get('name');
+  const phone = searchParams.get('phone');
+  const email = searchParams.get('email');
+  const long = searchParams.get('long');
+  const lat = searchParams.get('lat');
 
   // Delay for visibility effect
   useEffect(() => {
@@ -37,10 +41,10 @@ export default function PageThree() {
       ) : (
         <div className="h-screen flex justify-center items-center flex-col bg-[#161313]">
           {/* Background Circles */}
-          <div className="absolute top-0 right-0 h-24 rounded-full aspect-square bg-green-500 blur-[110px] sm:blur-[250px]" style={{ height: "100px" }} />
-          <div className="absolute top-0 left-0 h-24 rounded-full aspect-square bg-pink-500 blur-[110px] sm:blur-[250px]" style={{ height: "100px" }} />
-          <div className="absolute bottom-0 left-0 h-24 rounded-full aspect-square bg-blue-500 sm:bg-blue-600 blur-[110px] sm:blur-[280px]" style={{ height: "100px" }} />
-          <div className="absolute bottom-0 right-0 h-24 rounded-full aspect-square bg-yellow-500 sm:bg-yellow-600 blur-[110px] sm:blur-[280px]" style={{ height: "100px" }} />
+          <div className="absolute top-0 right-0 h-24 rounded-full aspect-square bg-green-500 blur-[110px] sm:blur-[250px]" />
+          <div className="absolute top-0 left-0 h-24 rounded-full aspect-square bg-pink-500 blur-[110px] sm:blur-[250px]" />
+          <div className="absolute bottom-0 left-0 h-24 rounded-full aspect-square bg-blue-500 sm:bg-blue-600 blur-[110px] sm:blur-[280px]" />
+          <div className="absolute bottom-0 right-0 h-24 rounded-full aspect-square bg-yellow-500 sm:bg-yellow-600 blur-[110px] sm:blur-[280px]" />
 
           {/* Logo Section */}
           <main className="flex flex-col items-center">
@@ -53,7 +57,7 @@ export default function PageThree() {
                 alt="logo-gdgc"
               />
             </div>
-            
+
             {/* Header */}
             <h1 className="text-white text-4xl font-extrabold font-silkscreen my-8 text-center w-[90%]">
               YOU'VE BEEN <span className="text-[#838de9]">PAWNED!</span>
@@ -68,10 +72,11 @@ export default function PageThree() {
           {/* User Information Section */}
           <section className={`transform transition-all duration-500 ease-in-out ${isVisible ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'} bg-[#161313] flex flex-col justify-start items-center mt-8 w-full px-4`}>
             <div className="border-[#6e6e6e] border shadow-custom rounded-xl text-left px-6 py-4 text-blue-100 w-full max-w-lg">
-              <p className="text-lg font-chakra"><strong>Name:</strong> {name}</p>
-              <p className="text-lg font-chakra"><strong>Mobile Number:</strong> {phone}</p>
-              <p className="text-lg font-chakra"><strong>Email ID:</strong> {email}</p>
-              <p className="text-lg font-chakra"><strong>Location:</strong> {long}, {lat}</p>
+              {/* Render user information conditionally */}
+              {name && <p className="text-lg font-chakra"><strong>Name:</strong> {name}</p>}
+              {phone && <p className="text-lg font-chakra"><strong>Mobile Number:</strong> {phone}</p>}
+              {email && <p className="text-lg font-chakra"><strong>Email ID:</strong> {email}</p>}
+              {long && lat && <p className="text-lg font-chakra"><strong>Location:</strong> {long}, {lat}</p>}
             </div>
           </section>
 
