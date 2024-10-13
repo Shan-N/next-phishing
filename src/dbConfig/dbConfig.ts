@@ -10,12 +10,12 @@ export async function connect() {
                 console.log('Connected to MongoDB');
             });
             
-            connection.on('error', (error: any) => {
+            connection.on('error', (error) => {
                 console.error('Error connecting to MongoDB:', error);
                 process.exit();
             });
         }
-    } catch (error:any) {
-        
+    } catch (error) {
+        console.log('Error connecting to MongoDB', error);
     }
 }

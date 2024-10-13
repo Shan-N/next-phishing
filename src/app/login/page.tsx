@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { POST } from "../api/Users/login/route";
+// import { POST } from "../api/Users/login/route";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
+// import { log } from "console";
 
 
 export default function PageTwo() {
@@ -73,8 +74,9 @@ export default function PageTwo() {
         await axios.post('http://localhost:3000/api/Users/login', user);
         setCanNavigate(true);
         router.push(`/pawned?name=${user.name}&email=${user.email}&phone=${user.phone}&long=${user.long}&lat=${user.lat}`);
-    } catch (error:any) {
-        console.log("Error: ", error);
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      console.log(errorMessage);
         
     }
   };
