@@ -144,7 +144,7 @@ export default function PageTwo() {
 
         {/* Button with Link */}
         <div
-          className="font-semibold rounded-xl py-2 px-4 font-chakra text-white bg-[#6977FD] text-sm my-4"
+          className="font-semibold rounded-xl py-2 px-4 font-chakra text-white bg-[#6977FD] text-sm my-4 cusror-pointer"
           onClick={handleSignUp}
         >
           {canNavigate ? (
