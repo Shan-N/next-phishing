@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 // import { POST } from "../api/Users/login/route";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -143,7 +144,7 @@ export default function PageTwo() {
         </div>
 
         {/* Button with Link */}
-        <div
+        <Button
           className="font-semibold rounded-xl py-2 px-4 font-chakra text-white bg-[#6977FD] text-sm my-4 cusror-pointer"
           onClick={handleSignUp}
         >
@@ -154,7 +155,7 @@ export default function PageTwo() {
           ) : (
             "GENERATE CERTIFICATE"
           )}
-        </div>
+        </Button>
       </div>
     </div>
   );
